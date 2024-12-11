@@ -12,4 +12,5 @@ execute sudo pacman -Sy --needed git \
     man-db man-pages texinfo \
     lshw \
     zip unzip \
-    fuse2
+    fuse2 \
+    openssh
