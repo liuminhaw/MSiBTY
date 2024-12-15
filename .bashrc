@@ -11,3 +11,17 @@ alias vim=nvim
 
 # PS1='[\u@\h \W]\$ '
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+if which go > /dev/null; then
+    if [[ $(go env GOBIN) != "" ]]; then
+        export PATH="$PATH:$(go env GOBIN)"
+    fi
+
+    if [[ ":$PATH:" != *":$(go env GOPATH)/bin:"* ]]; then
+        export PATH="$PATH:$(go env GOPATH)/bin" 
+    fi
+fi
+
+# Setting default editor
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim

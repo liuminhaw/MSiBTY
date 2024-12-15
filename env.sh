@@ -24,10 +24,15 @@ done
 
 export _SCRIPT_DIR
 
+_FILTER=${1}
+log "${_SCRIPT_DIR} -- ${_FILTER}"
+
 log "------------------- env setup -----------------------"
 
 log "------------------- copying config dirs -----------------------"
-execute copy_dir .config ${HOME}/.config
+execute copy_dir .config ${HOME}/.config ${_FILTER}
 
 log "------------------- copying config files -----------------------"
-execute copy_file .bashrc ${HOME}
+execute copy_file .bashrc ${HOME} ${_FILTER}
+
+
