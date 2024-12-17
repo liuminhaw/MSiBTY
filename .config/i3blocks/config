@@ -1,0 +1,67 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=15
+
+# [documentation]
+# full_text=Documentation
+# website=https://vivien.github.io/i3blocks
+# command=xdg-open "$website"
+# color=#f12711
+
+# [greetings]
+# color=#f5af19
+# command=echo "Hello, $USER!"
+# interval=once
+
+[volume-pulseaudio]
+command=$HOME/.config/i3blocks/scripts/volume-pulseaudio
+interval=once
+signal=1
+
+[cpu_usage]
+command=$HOME/.config/i3blocks/scripts/cpu_usage
+interval=10
+LABEL=CPU 
+#min_width=CPU: 100.00%
+T_WARN=50
+T_CRIT=80
+DECIMALS=2
+COLOR_NORMAL=#EBDBB2
+COLOR_WARN=#FFFC00
+COLOR_CRIT=#FF0000
+
+[memory]
+command=$HOME/.config/i3blocks/scripts/memory
+label=MEM: 
+interval=30
+
+[memory]
+command=$HOME/.config/i3blocks/scripts/memory
+label=SWAP: 
+instsance=swap
+interval=30
+
+[disk]
+command=$HOME/.config/i3blocks/scripts/disk_usage format="{used:.1f}G / {total:.1f}G ({perc_used:.1f}%)"
+label=DISK: 
+instance=/
+interval=30
+
+[battery]
+command=$HOME/.config/i3blocks/scripts/battery
+interval=30
+#LABEL=BAT
+LABEL=⚡ 
+#BAT_NUMBER=0
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1

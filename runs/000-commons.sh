@@ -15,4 +15,6 @@ execute sudo pacman -Sy --needed \
     zip unzip \
     fuse2 \
     openssh \
-    brightnessctl
+    brightnessctl \
+    acpi \
+    sysstat

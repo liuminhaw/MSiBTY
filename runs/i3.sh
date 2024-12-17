@@ -7,5 +7,5 @@ source ${_SCRIPT_DIR}/libs/helper.sh
 execute sudo pacman -Sy --needed xorg-server xorg-xinit xorg-xinput
 execute sudo pacman -Sy --needed i3 dmenu
 
-execute sudo pacman -Sy --needed polybar
+execute sudo pacman -Sy --needed i3blocks
 

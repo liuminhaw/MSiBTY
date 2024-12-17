@@ -34,5 +34,6 @@ execute copy_dir .config ${HOME}/.config ${_FILTER}
 
 log "------------------- copying config files -----------------------"
 execute copy_file .bashrc ${HOME} ${_FILTER}
+execute copy_file .xinitrc ${HOME} ${_FILTER}
 
 
