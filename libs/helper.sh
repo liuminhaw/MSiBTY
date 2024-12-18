@@ -72,6 +72,24 @@ copy_dir() {
 # TODO (Maybe):
 # - backup origin before copying
 copy_file() {
+    local _admin="false"
+    while :; do
+        case ${1} in
+        --sudo)
+            _admin="true"
+            ;;
+        -?*)
+            echo -e "[WARN] Unknown option (ignored): ${1}" 1>&2
+            exit 1
+            ;;
+        *)
+            break
+            ;;
+        esac
+
+        shift
+    done
+
     if [[ ${#} -ne 2 && ${#} -ne 3 ]]; then
         echo "[ERROR] ${FUNCNAME[0]} usage error" 1>&2
         return 1
@@ -89,9 +107,17 @@ copy_file() {
     fi
 
     if [[ -f ${_to}/${_name} ]]; then
-        execute rm ${_to}/${_name}
+        if [[ ${_admin} == "true" ]]; then
+            execute sudo rm ${_to}/${_name}
+        else
+            execute rm ${_to}/${_name}
+        fi
     fi
-    execute cp ${_from} ${_to}/${_name}
+    if [[ ${_admin} == "true" ]]; then
+        execute sudo cp ${_from} ${_to}/${_name}
+    else
+        execute cp ${_from} ${_to}/${_name}
+    fi
 }
 
 install_aur() {

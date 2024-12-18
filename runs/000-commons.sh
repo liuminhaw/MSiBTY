@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source ${_SCRIPT_DIR}/libs/helper.sh
 
@@ -6,6 +6,7 @@ source ${_SCRIPT_DIR}/libs/helper.sh
 # echo "Is Dry: ${_IS_DRY}"
 
 execute sudo pacman -Sy --needed \
+    bash-completion \
     git \
     less \
     which \
@@ -17,4 +18,5 @@ execute sudo pacman -Sy --needed \
     openssh \
     brightnessctl \
     acpi \
-    sysstat
+    sysstat \
+    xsel

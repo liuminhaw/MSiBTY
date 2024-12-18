@@ -268,11 +268,11 @@ bindsym $mod+Shift+x mode "lock"
 # Reference from: https://gist.github.com/dianjuar/ee774561a8bc02b077989bc17424a19f
 # Screenshots
 # Full screen
-bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym Print exec --no-startup-id maim "/home/$USER/Screenshots/$(date +%Y%m%d-%H%M%S)"
 # Active window
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Screenshots/$(date +%Y%m%d-%H%M%S)"
 # Select area
-bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Screenshots/$(date +%Y%m%d-%H%M%S)"
 ## Clipboard Screenshots
 # Full screen
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png

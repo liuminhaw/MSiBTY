@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 _SCRIPT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 _DRY=0
@@ -33,7 +33,9 @@ log "------------------- copying config dirs -----------------------"
 execute copy_dir .config ${HOME}/.config ${_FILTER}
 
 log "------------------- copying config files -----------------------"
+execute copy_file --sudo hosts /etc
 execute copy_file .bashrc ${HOME} ${_FILTER}
+execute copy_file .bash_profile ${HOME} ${_FILTER}
 execute copy_file .xinitrc ${HOME} ${_FILTER}
 
 

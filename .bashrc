@@ -22,6 +22,10 @@ if which go > /dev/null; then
     fi
 fi
 
+if which gh > /dev/null; then
+    alias ghmd="gh markdown-preview"
+fi
+
 # Setting default editor
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim

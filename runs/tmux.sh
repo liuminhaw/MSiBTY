@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!fcitx-im fcitx-chewing fcitx-configtool/usr/bin/env bash
 
 source ${_SCRIPT_DIR}/libs/helper.sh
 
