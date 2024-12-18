@@ -33,9 +33,10 @@ log "------------------- copying config dirs -----------------------"
 execute copy_dir .config ${HOME}/.config ${_FILTER}
 
 log "------------------- copying config files -----------------------"
-execute copy_file --sudo hosts /etc
+execute copy_file --sudo hosts /etc ${_FILTER}
 execute copy_file .bashrc ${HOME} ${_FILTER}
 execute copy_file .bash_profile ${HOME} ${_FILTER}
+execute copy_file .inputrc ${HOME} ${_FILTER}
 execute copy_file .xinitrc ${HOME} ${_FILTER}
-
+execute copy_file templates/.ready-tmux ${HOME} ${_FILTER}
 

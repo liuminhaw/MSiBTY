@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Run `startx /usr/bin/i3` to start i3 window manager
 

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# tmux display-message "ready-tmux ready"
+# tmux neww -n "test"
+
+tmux new-window -n "code"
+tmux send-keys -t code "nvim ." 
+tmux new-window -n "scratch"
+tmux select-window -t 1

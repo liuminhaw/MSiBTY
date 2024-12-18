@@ -24,7 +24,7 @@ fi
 for _script in ${_scripts}; do 
     _script=$(basename ${_script})
     if [[ -L /usr/local/bin/${_script%.*} ]]; then
-        sudo rm /usr/local/bin/${_script%.*}
+        execute sudo rm /usr/local/bin/${_script%.*}
     fi
     execute sudo ln -s ${_dest}/scripts/${_script} /usr/local/bin/${_script%.*}
 done

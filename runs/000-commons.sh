@@ -19,4 +19,5 @@ execute sudo pacman -Sy --needed \
     brightnessctl \
     acpi \
     sysstat \
-    xsel
+    xsel \
+    ripgrep
