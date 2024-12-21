@@ -27,7 +27,7 @@ if tmux has-session -t=${_selected_name} 2> /dev/null; then
     switch_to ${_selected_name}
 else
     tmux new-session -ds ${_selected_name} -c ${_selected}
+    tmux send-keys -t ${_selected_name} "ready-tmux" Enter
     switch_to ${_selected_name}
-    tmux send-keys -t ${_selected_name} "ready-tmux" 
 fi
 

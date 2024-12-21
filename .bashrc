@@ -26,6 +26,16 @@ if which gh > /dev/null; then
     alias ghmd="gh markdown-preview"
 fi
 
+if which tmux > /dev/null; then
+    if [[ -z ${TMUX} ]]; then
+        tmux attach-session -t tasks || tmux new-session -s tasks
+    fi
+fi
+
 # Setting default editor
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
+
+# Key bindings
+# bind '"\C-f": "tmux-sessionizer\n"'
+

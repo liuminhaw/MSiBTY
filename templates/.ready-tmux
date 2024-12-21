@@ -4,6 +4,6 @@
 # tmux neww -n "test"
 
 tmux new-window -n "code"
-tmux send-keys -t code "nvim ." 
+tmux send-keys -t code "nvim ." Enter
 tmux new-window -n "scratch"
 tmux select-window -t 1
