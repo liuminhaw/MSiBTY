@@ -29,6 +29,7 @@ require("mason-lspconfig").setup({
 		"sqlls",
 		"yamlls",
 		"rust_analyzer",
+		"clangd",
 	},
 	handlers = {
 		lsp_zero.default_setup,

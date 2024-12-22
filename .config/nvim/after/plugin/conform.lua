@@ -13,6 +13,7 @@ require("conform").setup({
 		yaml = { "prettier" },
 		sql = { "sqlfmt" },
 		python = { "black" },
+		c = { "clang_format" },
 	},
 	formatters = {
 		deno_fmt = {
