@@ -20,4 +20,5 @@ execute sudo pacman -Sy --needed \
     acpi \
     sysstat \
     xsel \
-    ripgrep
+    ripgrep \
+    tree

@@ -12,21 +12,26 @@ alias vim=nvim
 # PS1='[\u@\h \W]\$ '
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
-if which go > /dev/null; then
+if which go >/dev/null; then
     if [[ $(go env GOBIN) != "" ]]; then
         export PATH="$PATH:$(go env GOBIN)"
     fi
 
     if [[ ":$PATH:" != *":$(go env GOPATH)/bin:"* ]]; then
-        export PATH="$PATH:$(go env GOPATH)/bin" 
+        export PATH="$PATH:$(go env GOPATH)/bin"
     fi
 fi
 
-if which gh > /dev/null; then
+# if which ruby >/dev/null; then
+#     export GEM_HOME="$(gem env user_gemhome)"
+#     export PATH="$PATH:$GEM_HOME/bin"
+# fi
+
+if which gh >/dev/null; then
     alias ghmd="gh markdown-preview"
 fi
 
-if which tmux > /dev/null; then
+if which tmux >/dev/null; then
     if [[ -z ${TMUX} ]]; then
         tmux attach-session -t tasks || tmux new-session -s tasks
     fi
@@ -38,4 +43,3 @@ export VISUAL=/usr/bin/nvim
 
 # Key bindings
 # bind '"\C-f": "tmux-sessionizer\n"'
-

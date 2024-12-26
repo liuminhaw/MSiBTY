@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-ource ${_SCRIPT_DIR}/libs/helper.sh
+source ${_SCRIPT_DIR}/libs/helper.sh
 
-execute sudo pacman -Sy --needed go
+execute sudo pacman -Sy --needed go hugo
