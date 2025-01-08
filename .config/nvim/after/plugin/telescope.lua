@@ -40,4 +40,18 @@ require("telescope").setup({
 			".git/",
 		},
 	},
+	pickers = {
+		find_files = {
+			theme = "ivy",
+		},
+        grep_string = {
+            theme = "ivy",
+        },
+        git_files = {
+            theme = "ivy",
+        },
+	},
+	extensions = {
+		fzf = {},
+	},
 })
