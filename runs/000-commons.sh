@@ -21,4 +21,5 @@ execute sudo pacman -Sy --needed \
     sysstat \
     xsel \
     ripgrep \
-    tree
+    tree \
+    inetutils

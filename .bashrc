@@ -22,10 +22,9 @@ if which go >/dev/null; then
     fi
 fi
 
-# if which ruby >/dev/null; then
-#     export GEM_HOME="$(gem env user_gemhome)"
-#     export PATH="$PATH:$GEM_HOME/bin"
-# fi
+if [[ -f $HOME/.cargo/env ]]; then
+    . "$HOME/.cargo/env"
+fi
 
 if which gh >/dev/null; then
     alias ghmd="gh markdown-preview"
@@ -40,6 +39,9 @@ fi
 # Setting default editor
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
+
+# Environment variables for edtmp script
+export _EDTMP_BASE_DIR=${HOME}/edtmp
 
 # Key bindings
 # bind '"\C-f": "tmux-sessionizer\n"'

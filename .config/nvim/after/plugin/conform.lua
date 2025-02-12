@@ -14,6 +14,7 @@ require("conform").setup({
 		sql = { "sqlfmt" },
 		python = { "black" },
 		c = { "clang_format" },
+        rust = { "rustfmt" },
 	},
 	formatters = {
 		deno_fmt = {

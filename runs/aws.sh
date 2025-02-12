@@ -42,3 +42,4 @@ execute rm -f "${_temp_acs}"
 
 execute install_aur "${HOME}/builds" "https://aur.archlinux.org/aws-cli-v2.git"
 
+execute sudo pacman -Sy --needed python-cfn-lint
