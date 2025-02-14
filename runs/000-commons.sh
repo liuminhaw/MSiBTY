@@ -22,4 +22,5 @@ execute sudo pacman -Sy --needed \
     xsel \
     ripgrep \
     tree \
-    inetutils
+    inetutils \
+    jq

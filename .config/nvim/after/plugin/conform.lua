@@ -6,15 +6,16 @@ require("conform").setup({
 		-- python = { "isort", "black" },
 		go = { "gofumpt", "goimports", "golines" },
 		-- Use a sub-list to run only the first available formatter
-		javascript = { "deno_fmt" },
+		javascript = { "prettier" },
 		markdown = { "deno_fmt" },
 		json = { "deno_fmt" },
-		html = { "htmlbeautifier" },
+		-- html = { "htmlbeautifier" },
+		html = { "prettier" },
 		yaml = { "prettier" },
 		sql = { "sqlfmt" },
 		python = { "black" },
 		c = { "clang_format" },
-        rust = { "rustfmt" },
+		rust = { "rustfmt" },
 	},
 	formatters = {
 		deno_fmt = {
