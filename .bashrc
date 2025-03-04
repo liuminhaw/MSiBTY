@@ -36,6 +36,9 @@ if which tmux >/dev/null; then
     fi
 fi
 
+# PATH
+export PATH=$PATH:$HOME/bin
+
 # Setting default editor
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
