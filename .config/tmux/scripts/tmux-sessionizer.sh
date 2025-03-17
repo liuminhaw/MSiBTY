@@ -15,7 +15,8 @@ switch_to() {
     fi
 }
 
-_selected=$(find ~/ -mindepth 1 -maxdepth 5 -type d ! -path '*/.*' | fzf)
+_selected=$(find ~/coding -mindepth 1 -maxdepth 3 -type d ! -path '*/.*' | fzf)
+# _selected=$(find ~/ -mindepth 1 -maxdepth 5 -type d ! -path '*/.*' | fzf)
 # _selected=$(find ~/ -type d | fzf)
 if [[ -z ${_selected} ]]; then
     exit 0
