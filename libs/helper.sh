@@ -18,9 +18,8 @@ execute() {
 
     if [[ ${_DRY} -eq 1 ]]; then
         _IS_DRY=1 "${@}"
-        return 
+        return
     fi
-
 
     "${@}"
 }
@@ -37,36 +36,41 @@ copy_dir() {
     local _to=${2}
     local _filter=${3}
 
-    pushd ${_from} > /dev/null
-        log "pushd path: $(pwd)"
-        local _dirs=$(find . -mindepth 1 -maxdepth 1 -type d)
-        local _dir
-        for _dir in ${_dirs}; do
+    pushd ${_from} >/dev/null
+    log "pushd path: $(pwd)"
+    local _dirs=$(find . -mindepth 1 -maxdepth 1 -type d)
+    local _dir
+    for _dir in ${_dirs}; do
 
-            echo "${_dir}" | grep -qv "${_filter}"
-            if (( PIPESTATUS[1] == 0 )); then
-                log "filtering ${_dir}"
-                continue
-            fi
+        echo "${_dir}" | grep -qv "${_filter}"
+        if ((PIPESTATUS[1] == 0)); then
+            log "filtering ${_dir}"
+            continue
+        fi
 
-            _dir=$(sed 's|^\./||' <<< ${_dir})
-            execute rm -rf ${_to}/${_dir}
-            execute cp -r ${_dir} ${_to}/${_dir}
+        _dir=$(sed 's|^\./||' <<<${_dir})
+        # execute rm -rf ${_to}/${_dir}
+        # execute cp -r ${_dir} ${_to}/${_dir}
+        if [[ ! -f ${_to}/${_dir}/scripts/.env ]]; then
+            execute rsync -a --delete ${_dir}/ ${_to}/${_dir}
+        else
+            execute rsync -a --delete --exclude="scripts/.env" ${_dir}/ ${_to}/${_dir}
+        fi
 
-            # Execute setup scripts in ${_to}/${_dir} if there is any
-            if [[ -d ${_dir}/setup ]]; then
-                local _scripts=$(find ${_dir}/setup -mindepth 1 -maxdepth 1 -executable -type f) 
-                local _script
-                for _script in ${_scripts}; do
-                    _script=$(sed 's|^\./||' <<< ${_script})
-                    log "execute ${_script}"
-                    # echo "Dry: ${_DRY}"
-                    # echo "Is Dry: ${_IS_DRY}"
-                    _IS_DRY=0 execute ${_script} "${_dir}" "${_to}/${_dir}"
-                done
-            fi
-        done
-    popd > /dev/null
+        # Execute setup scripts in ${_to}/${_dir} if there is any
+        if [[ -d ${_dir}/setup ]]; then
+            local _scripts=$(find ${_dir}/setup -mindepth 1 -maxdepth 1 -executable -type f)
+            local _script
+            for _script in ${_scripts}; do
+                _script=$(sed 's|^\./||' <<<${_script})
+                log "execute ${_script}"
+                # echo "Dry: ${_DRY}"
+                # echo "Is Dry: ${_IS_DRY}"
+                _IS_DRY=0 execute ${_script} "${_dir}" "${_to}/${_dir}"
+            done
+        fi
+    done
+    popd >/dev/null
 }
 
 # TODO (Maybe):
@@ -101,7 +105,7 @@ copy_file() {
     local _name=$(basename ${_from})
 
     echo "${_from}" | grep -qv "${_filter}"
-    if (( PIPESTATUS[1] == 0 )); then
+    if ((PIPESTATUS[1] == 0)); then
         log "filtering ${_from}"
         return
     fi
@@ -130,19 +134,18 @@ install_aur() {
     local _git_repo=${2}
     local _package_name=$(basename ${_git_repo} .git)
 
-    pushd ${_aur_build_dir} > /dev/null
-        log "pushd path: $(pwd)"
-        if [[ ! -d ${_package_name} ]]; then
-            log "cloning ${_git_repo}"
-            git clone ${_git_repo}
-        else
-            log "git repo exist, no need to clone"
-        fi
-    popd > /dev/null
+    pushd ${_aur_build_dir} >/dev/null
+    log "pushd path: $(pwd)"
+    if [[ ! -d ${_package_name} ]]; then
+        log "cloning ${_git_repo}"
+        git clone ${_git_repo}
+    else
+        log "git repo exist, no need to clone"
+    fi
+    popd >/dev/null
 
-    pushd ${_aur_build_dir}/${_package_name} > /dev/null
-        git pull
-        makepkg --needed --syncdeps --install --rmdeps --clean
-    popd > /dev/null
+    pushd ${_aur_build_dir}/${_package_name} >/dev/null
+    git pull
+    makepkg --needed --syncdeps --install --rmdeps --clean
+    popd >/dev/null
 }
-

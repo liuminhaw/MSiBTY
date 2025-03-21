@@ -23,4 +23,5 @@ execute sudo pacman -Sy --needed \
     ripgrep \
     tree \
     inetutils \
-    jq
+    jq \
+    rsync

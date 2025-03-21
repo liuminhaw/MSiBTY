@@ -1,10 +1,43 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This script is used to automatically detect and configure the displays
 # Note: use `xrandr -q` to get the display names
 
-_BUILTIN_DISPLAY="eDP-1"
-_BUILTIN_DISPLAY_RESOLUTION="1920x1200"
-_EXTERNAL_DISPLAY_RESOLUTION="1920x1080"
+# _BUILTIN_DISPLAY="eDP-1"
+# _BUILTIN_DISPLAY_RESOLUTION="1920x1200"
+# _EXTERNAL_DISPLAY_RESOLUTION="1920x1080"
+
+# -----------------------------------------------------------------------------------
+# read_env: Read the environment variables from the .env file located in the same
+# directory as the script
+#
+# Returns:
+#   Exit script with exit code 1 if the .env file is not found or the required
+#   environment variables are not set.
+# -----------------------------------------------------------------------------------
+read_env() {
+    local _script_dir=$(cd $(dirname "${0}") && pwd)
+    local _env_file="${_script_dir}/.env"
+
+    if [[ ! -f "${_env_file}" ]]; then
+        echo "Error: ${_env_file} file not found"
+        exit 1
+    fi
+
+    source "${_env_file}"
+
+    if [[ -z ${_BUILTIN_DISPLAY} ]]; then
+        echo "Error: _BUILTIN_DISPLAY must be set in ${_env_file}"
+        exit 1
+    fi
+    if [[ -z ${_BUILTIN_DISPLAY_RESOLUTION} ]]; then
+        echo "Error: _BUILTIN_DISPLAY_RESOLUTION must be set in ${_env_file}"
+        exit 1
+    fi
+    if [[ -z ${_EXTERNAL_DISPLAY_RESOLUTION} ]]; then
+        echo "Error: _EXTERNAL_DISPLAY_RESOLUTION must be set in ${_env_file}"
+        exit 1
+    fi
+}
 
 # --------------------------------------------------------------------------------------------------------------------------
 # gen_ext_args: Generate the arguments when external displays is attached
@@ -39,17 +72,20 @@ gen_ext_args() {
         _arguments="--output ${_BUILTIN_DISPLAY} --primary --mode ${_BUILTIN_DISPLAY_RESOLUTION} --pos ${_builtin_pos} --rotate normal"
     fi
 
-	for _display in "${_displays[@]}"; do
-		if [[ "${_display}" == "${_detected_display}" ]]; then
-			_arguments="${_arguments} --output ${_display} --mode ${_EXTERNAL_DISPLAY_RESOLUTION} --pos ${_external_pos} --rotate normal"
-		else
-			_arguments="${_arguments} --output ${_display} --off"
-		fi
-	done
-	echo "${_arguments}"
+    for _display in "${_displays[@]}"; do
+        if [[ "${_display}" == "${_detected_display}" ]]; then
+            _arguments="${_arguments} --output ${_display} --mode ${_EXTERNAL_DISPLAY_RESOLUTION} --pos ${_external_pos} --rotate normal"
+        else
+            _arguments="${_arguments} --output ${_display} --off"
+        fi
+    done
+    echo "${_arguments}"
 }
 
 main() {
+    # Read the environment variables
+    read_env
+
     local _mode=${1}
     local declare _detected_displays
     local declare _displays
@@ -110,7 +146,7 @@ main() {
         #     fi
         # done
     else
-       _arguments=$(gen_ext_args "0x0" "off" "none" "${_displays[*]}")
+        _arguments=$(gen_ext_args "0x0" "off" "none" "${_displays[*]}")
 
         # _arguments="--output ${_BUILTIN_DISPLAY} --mode ${_BUILTIN_DISPLAY_RESOLUTION} --pos 0x0 --rotate normal"
         # for _display in "${_displays[@]}"; do

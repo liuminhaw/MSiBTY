@@ -123,7 +123,7 @@ bindsym $mod+a focus parent
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:  "
-set $ws2 "2:  " 
+set $ws2 "2:  " 
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
@@ -232,9 +232,7 @@ mode "display" {
     bindsym r exec ~/.config/i3/scripts/auto-detect.sh right
     bindsym l exec ~/.config/i3/scripts/auto-detect.sh left
     bindsym n exec ~/.config/i3/scripts/auto-detect.sh normal
-    bindsym a exec ~/.config/i3/scripts/auto-detect.sh
-    # bindsym n exec ~/.screenlayout/auto-detect.sh normal
-    # bindsym a exec ~/.screenlayout/auto-detect.sh
+    # bindsym a exec ~/.config/i3/scripts/auto-detect.sh
 
     # back to normal: Enter or Escape 
     bindsym Return mode "default"
@@ -243,8 +241,7 @@ mode "display" {
 
 bindsym $mod+Shift+d mode "display"
 
-# exec ~/.config/i3/scripts/auto-detect.sh normal
-exec ~/.screenlayout/auto-detect.sh normal
+exec ~/.config/i3/scripts/auto-detect.sh normal
 
 
 mode "lock" {
@@ -286,14 +283,16 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/input-modifier.sh
 # This may differ depending on the touchpad model
 # exec xinput set-prop "ELAN0412:00 04F3:311D Touchpad" "libinput Tapping Enabled" 1
 # exec xinput set-prop "ELAN0412:00 04F3:311D Touchpad" "libinput Natural Scrolling Enabled" 1
-exec xinput set-prop "SNSL0027:00 2C2F:0027 Touchpad" "libinput Natural Scrolling Enabled" 1
-exec xinput set-prop "SNSL0027:00 2C2F:0027 Touchpad" "libinput Accel Speed" 0.6
+# exec xinput set-prop "SNSL0027:00 2C2F:0027 Touchpad" "libinput Natural Scrolling Enabled" 1
+# exec xinput set-prop "SNSL0027:00 2C2F:0027 Touchpad" "libinput Accel Speed" 0.6
 # Common values for "Click Method Enabled"
 # `0, 0`: No click method
 # `1, 0`: Button areas (Click Method 1)
 # `0, 1`: Clickfinger (Click Method 2)
 # `1, 1`: both methods enabled (If supported)
-exec xinput set-prop "SNSL0027:00 2C2F:0027 Touchpad" "libinput Click Method Enabled" 0 1
+# exec xinput set-prop "SNSL0027:00 2C2F:0027 Touchpad" "libinput Click Method Enabled" 0 1
+
+exec ~/.config/i3/scripts/input-modifier.sh
 
 # Sreen brightness controls
 # This is used on Gentoo Linux where brightnessctl is not available in the repository
@@ -313,10 +312,10 @@ exec --no-startup-id fcitx -d
 # assign [class="firefox"] $ws4
 # assign [class="Terminator"] $ws1
 # assign [class="Google-chrome"] $ws2
-assign [class="firefox"] $ws2
+# assign [class="firefox"] $ws2
 assign [class="Alacritty"] $ws1
 
-exec firefox
+# exec firefox
 # exec google-chrome-stable
 exec alacritty
 # exec terminator
