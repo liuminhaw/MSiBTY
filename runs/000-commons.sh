@@ -24,4 +24,5 @@ execute sudo pacman -Sy --needed \
     tree \
     inetutils \
     jq \
-    rsync
+    rsync \
+    base-devel
