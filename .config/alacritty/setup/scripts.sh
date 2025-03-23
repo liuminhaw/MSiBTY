@@ -23,8 +23,8 @@ fi
 
 for _script in ${_scripts}; do 
     _script=$(basename ${_script})
-    if [[ -L /${HOME}/bin/${_script%.*} ]]; then
-        execute rm /${HOME}/bin/${_script%.*}
+    if [[ -L ${HOME}/bin/${_script%.*} ]]; then
+        execute rm ${HOME}/bin/${_script%.*}
     fi
-    execute ln -s ${_dest}/scripts/${_script} /${HOME}/bin/${_script%.*}
+    execute ln -s ${_dest}/scripts/${_script} ${HOME}/bin/${_script%.*}
 done
