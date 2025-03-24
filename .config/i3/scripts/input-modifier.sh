@@ -30,6 +30,10 @@ read_env() {
         echo "Error: _INPUT_TOUCHPAD_ACCEL_DEVICE must be set in ${_env_file}"
         exit 1
     fi
+    if [[ -z ${_INPUT_TOUCHPAD_TAPPING} ]]; then
+        echo "Error: _INPUT_TOUCHPAD_TAPPING must be set in ${_env_file}"
+        exit 1
+    fi
 }
 
 main() {
@@ -44,6 +48,10 @@ main() {
     # `0, 1`: Clickfinger (Click Method 2)
     # `1, 1`: both methods enabled (If supported)
     xinput set-prop "${_INPUT_TOUCHPAD_DEVICE}" "libinput Click Method Enabled" 0 1
+
+    if [[ "${_INPUT_TOUCHPAD_TAPPING}" == "true" ]]; then
+        xinput set-prop "${_INPUT_TOUCHPAD_DEVICE}" "libinput Tapping Enabled" 1
+    fi
 }
 
 main "${@}"
