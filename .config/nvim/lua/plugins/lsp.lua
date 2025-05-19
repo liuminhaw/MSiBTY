@@ -155,6 +155,22 @@ return {
 				"stylua",
 			},
 		})
+
+        local cmp = require("cmp")
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
+        cmp.setup({
+            mapping = {
+                ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+                ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+                ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                ["<C-Space>"] = cmp.mapping.complete(),
+            },
+            sources = {
+                { name = "copilot", group_index = 2},
+                { name = "nvim_lsp" },
+                { name = "buffer" },
+            },
+        })
 	end,
 
 	vim.keymap.set(
