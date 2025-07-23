@@ -44,7 +44,9 @@ return {
 				-- html = { "htmlbeautifier" },
 				html = { "prettier" },
 				yaml = { "prettier" },
-				sql = { "sqlfmt" },
+                -- pg_formatter formatting problem: Can't format with latest version 5.6
+                -- https://github.com/darold/pgFormatter/issues/365
+				sql = { "pg_format" },
 				python = { "black" },
 				c = { "clang_format" },
 				rust = { "rustfmt" },
