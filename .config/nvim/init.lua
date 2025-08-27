@@ -1,6 +1,7 @@
 require("remap")
 require("set")
 require("lazy_init")
+require("mdtoc")
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),

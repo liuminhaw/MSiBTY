@@ -10,3 +10,4 @@ execute sudo pacman -Sy noto-fonts-emoji noto-fonts
 
 execute install_aur "${HOME}/builds" "https://aur.archlinux.org/noto-fonts-tc.git"
 
+execute ${_SCRIPT_DIR}/scripts/sarasa-gothic-nerd-font.sh

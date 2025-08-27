@@ -5,6 +5,4 @@ source ${_SCRIPT_DIR}/libs/helper.sh
 # echo "Dry: ${_DRY}"
 # echo "Is Dry: ${_IS_DRY}"
 
-# For building mthc
-execute sudo pacman -Sy --needed libunistring
-execute sudo pacman -Sy --needed pcre2
+execute sudo pacman -Sy --needed xxd
