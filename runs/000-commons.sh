@@ -25,4 +25,5 @@ execute sudo pacman -Sy --needed \
     inetutils \
     jq \
     rsync \
-    base-devel
+    base-devel \
+    htop
