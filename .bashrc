@@ -26,6 +26,10 @@ if [[ -f $HOME/.cargo/env ]]; then
     . "$HOME/.cargo/env"
 fi
 
+if [[ -f "/opt/google-cloud-cli/completion.bash.inc" ]]; then
+    source /opt/google-cloud-cli/completion.bash.inc
+fi
+
 if which gh >/dev/null; then
     alias ghmd="gh markdown-preview"
 fi
@@ -40,11 +44,15 @@ if which file >/dev/null; then
     alias mime='file --mime'
 fi
 
-if which tmux >/dev/null; then
-    if [[ -z ${TMUX} ]]; then
-        tmux attach-session -t tasks || tmux new-session -s tasks
-    fi
+if which kubectl >/dev/null; then
+    alias k=kubectl
 fi
+
+# if which tmux >/dev/null; then
+#     if [[ -z ${TMUX} ]]; then
+#         tmux attach-session -t tasks || tmux new-session -s tasks
+#     fi
+# fi
 
 # PATH
 export PATH=$PATH:$HOME/bin

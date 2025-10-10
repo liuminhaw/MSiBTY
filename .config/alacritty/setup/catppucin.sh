@@ -12,3 +12,4 @@ _dest=${2}
 
 execute mkdir -p ${_dest}/themes
 execute curl -LO --output-dir ${_dest}/themes https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
+execute curl -LO --output-dir ${_dest}/themes https://github.com/catppuccin/alacritty/raw/main/catppuccin-latte.toml

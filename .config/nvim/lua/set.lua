@@ -120,3 +120,10 @@ end, { desc = "Generate Table of Contents from markdown", nargs = 0 })
 
 vim.keymap.set("n", "<leader>tc", "<cmd>ToC<CR>")
 vim.keymap.set("x", "<leader>tc", "<cmd>ToC<CR>")
+
+vim.filetype.add({
+    extension = {
+        tmpl = "html",
+        tf = "terraform",
+    },
+})

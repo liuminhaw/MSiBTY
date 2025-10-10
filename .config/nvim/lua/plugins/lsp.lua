@@ -50,6 +50,7 @@ return {
 				python = { "black" },
 				c = { "clang_format" },
 				rust = { "rustfmt" },
+                terraform = { "hclfmt" },
 			},
 			formatters = {
 				deno_fmt = {

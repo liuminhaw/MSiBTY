@@ -52,7 +52,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec alacritty -e bash -lc 'tmux attach-session -t tasks || tmux new-session -s tasks'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -189,6 +189,24 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+Escape exec --no-startup-id pkill i3-nagbar
+
+mode "theme" {
+    bindsym l exec i3-nagbar -t warning \
+        -m 'Using light theme? All tmux session will be killed and recreate.' \
+        -B 'Yes' '~/.config/i3/scripts/modify-theme.sh light & tmux kill-server & alacritty -e bash -lc "tmux attach-session -t tasks || tmux new-session -s tasks" & pkill i3-nagbar & i3-msg mode default'
+    bindsym d exec i3-nagbar -t warning \
+        -m 'Using dark theme? All tmux session will be killed and recreate.' \
+        -B 'Yes' '~/.config/i3/scripts/modify-theme.sh dark & tmux kill-server & alacritty -e bash -lc "tmux attach-session -t tasks || tmux new-session -s tasks" & pkill i3-nagbar & i3-msg mode default'
+
+    bindsym Escape exec --no-startup-id pkill i3-nagbar
+
+    # back to normal: Enter or Escape 
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+t mode "theme"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -317,7 +335,7 @@ assign [class="Alacritty"] $ws1
 
 # exec firefox
 # exec google-chrome-stable
-exec alacritty
+exec alacritty -e bash -lc 'tmux attach-session -t tasks || tmux new-session -s tasks'
 # exec terminator
 
 # exec --no-startup-id i3-msg "workspace number $ws2; exec ~/Scripts/chrome-auto-profile/chrome-auto-profile.sh __profile_name__"

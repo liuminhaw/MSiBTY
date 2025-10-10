@@ -26,4 +26,5 @@ execute sudo pacman -Sy --needed \
     jq \
     rsync \
     base-devel \
-    htop
+    htop \
+    go-yq
