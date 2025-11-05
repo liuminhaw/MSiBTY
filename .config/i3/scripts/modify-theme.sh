@@ -3,14 +3,14 @@
 # This script modifies the theme of alacritty, tmux, and neovim
 
 _CONFIG_FILES=(
-    "${HOME}/.config/nvim/lua/plugins/colorscheme.lua"
+    "${HOME}/.config/nvim/lua/plugins/colortheme.lua"
     "${HOME}/.config/tmux/tmux.conf"
 )
 
 # _NEOVIM_CONFIG="${HOME}/.config/nvim/lua/plugins/colorscheme.lua"
 # _TMUX_CONFIG="${HOME}/.config/tmux/tmux.conf"
 
-_DARK_MODE="mocha"
+_DARK_MODE="macchiato"
 _LIGHT_MODE="latte"
 
 _ORIG_THEME=""
@@ -36,6 +36,7 @@ EOF
 #   _NEW_THEME
 # Arguments:
 #   $1: mode, "dark" or "light"
+#   $2: config file to modify
 # ------------------------------------------------------------------------
 mod_theme() {
     if [[ ${#} -ne 2 ]]; then

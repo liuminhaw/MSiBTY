@@ -1,14 +1,36 @@
-vim.g.mapleader = " "
+local opts = { noremap = true, silent = true }
+
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- resize with arrows
+vim.keymap.set("n", "<left>", ":vertical resize -2<CR>", opts)
+vim.keymap.set("n", "<right>", ":vertical resize +2<CR>", opts)
+vim.keymap.set("n", "<up>", ":resize -2<CR>", opts)
+vim.keymap.set("n", "<down>", ":resize +2<CR>", opts)
+
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+-- delete single character without copying into register
+vim.keymap.set("n", "x", '"_x')
+
+-- move selected line / block of text in visual mode (up and down)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
+
+-- centered scrolling
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+-- toggle line wrapping
+vim.keymap.set("n", "<leader>lw", "<cmd>set wrap!<CR>", opts)
+
+-- stay in visual mode when indenting
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
 
 -- vim.keymap.set("n", "<leader>vwm", function()
 --     require("vim-with-me").StartVimWithMe()
@@ -18,16 +40,15 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- end)
 
 -- greatest remap ever
+-- Keep the pasted text when pasting over a selection
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
+-- Yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-
--- This is going to get me cancelled
--- vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
@@ -38,7 +59,7 @@ vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<space>x", ":.lua<CR>") --> Execute current line
 vim.keymap.set("v", "<space>x", ":lua<CR>") --> Execute selected lines
@@ -47,12 +68,12 @@ vim.keymap.set("v", "<space>x", ":lua<CR>") --> Execute selected lines
 --vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	vim.cmd("so")
 end)
 
 -- Copilot remaps
 vim.keymap.set("i", "<C-l>", function()
-    vim.fn.feedkeys(vim.fn['copilot#Accept'](), '')
+	vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
 end)
 vim.keymap.set("i", "<M-l>", "<Plug>(copilot-accept-word)")
 vim.keymap.set("i", "<M-j>", "<Plug>(copilot-accept-line)")
@@ -64,6 +85,7 @@ vim.keymap.set("i", "<M-p>", "<cmd>Copilot panel<CR>")
 vim.keymap.set("n", "<leader>rs", "<cmd>let g:netrw_rsync_cmd='rsync --rsync-path=\"sudo rsync\"'<CR>")
 vim.keymap.set("n", "<leader>rr", "<cmd>let g:netrw_rsync_cmd='rsync'<CR>")
 vim.keymap.set("n", "<leader>re", "<cmd>echo g:netrw_rsync_cmd<CR>")
+vim.keymap.set("n", "<leader>rh", '<cmd>echo ":e rsync://user@host[:port]:/path/to/file"<CR>')
 
 -- remap for exiting terminal mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")

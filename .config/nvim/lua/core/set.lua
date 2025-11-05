@@ -1,28 +1,47 @@
-vim.opt.guicursor = ""
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-vim.opt.nu = true
+vim.g.have_nerd_font = true
+
+vim.opt.guicursor = ""
+vim.opt.mouse = "a"
+
+vim.opt.showmode = false
+
+vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
+
+vim.opt.breakindent = true
+vim.opt.smartindent = true
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.smartindent = true
+vim.o.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+vim.opt.confirm = true
 
 vim.opt.wrap = false
+vim.opt.linebreak = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
+-- vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 12
+vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
@@ -122,8 +141,11 @@ vim.keymap.set("n", "<leader>tc", "<cmd>ToC<CR>")
 vim.keymap.set("x", "<leader>tc", "<cmd>ToC<CR>")
 
 vim.filetype.add({
-    extension = {
-        tmpl = "html",
-        tf = "terraform",
-    },
+	extension = {
+		tmpl = "html",
+		tf = "terraform",
+	},
 })
+
+vim.hl.priorities.semantic_tokens = 95 -- Or any number lower than 100, treesitter's priority level
+
