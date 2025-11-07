@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 log() {
     if [[ ${_DRY} -eq 1 || ${_IS_DRY} -eq 1 ]]; then
-        echo "[DRY RUN]: ${@}"
+        echo "[DRY RUN]: ${*}"
     else
-        echo "[EXECUTE]: ${@}"
+        echo "[EXECUTE]: ${*}"
     fi
 }
 
@@ -13,7 +13,7 @@ execute() {
         log "${@}"
         return
     else
-        log "execute ${@}"
+        log "execute ${*}"
     fi
 
     if [[ ${_DRY} -eq 1 ]]; then

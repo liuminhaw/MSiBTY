@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 #
 # This script is used to change the font size of the terminal in the alacritty.yml file
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source ${_SCRIPT_DIR}/libs/helper.sh
 

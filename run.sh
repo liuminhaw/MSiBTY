@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # TODOs (Maybe)
 # v export DRY RUN checks to every executing script (to get an overview of what each script is doing)

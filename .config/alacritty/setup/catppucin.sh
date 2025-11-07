@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ ${#} -ne 2 ]]; then
     echo "[ERROR] ${FUNCNAME[0]} usage error" 1>&2 

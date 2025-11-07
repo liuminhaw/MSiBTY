@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # reflector is a Python script which can retrieve the latest mirror list from the Arch Linux Mirror Status page
 # filter the most up-to-date mirrors, sort them by speed and overwrite the file /etc/pacman.d/mirrorlist
