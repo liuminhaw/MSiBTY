@@ -1,10 +1,13 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
+	branch = "main",
+	lazy = false,
 	config = function()
-		local configs = require("nvim-treesitter.configs")
+		-- local configs = require("nvim-treesitter.configs")
 
-		configs.setup({
+		-- configs.setup({
+		require('nvim-treesitter').setup({
 			ensure_installed = {
 				"c",
 				"lua",
@@ -20,7 +23,7 @@ return {
 				"bash",
 				"json",
 				"yaml",
-                "terraform",
+				"terraform",
 			},
 			sync_install = false,
 			auto_install = true,
