@@ -10,3 +10,5 @@ execute curl --output /tmp/migrate.linux-amd64.tar.gz -L https://github.com/gola
 execute tar -xvzf /tmp/migrate.linux-amd64.tar.gz -C /tmp
 execute mv /tmp/migrate ~/go/bin/
 
+execute go install github.com/air-verse/air@latest
+

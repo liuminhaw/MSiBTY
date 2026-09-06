@@ -32,6 +32,7 @@ require('lazy').setup({
     require 'plugins.telescope',
     require 'plugins.treesitter',
     require 'plugins.colorizer',
+    require 'plugins.indent-blankline',
 })
 
 -- vim.api.nvim_create_autocmd("LspAttach", {

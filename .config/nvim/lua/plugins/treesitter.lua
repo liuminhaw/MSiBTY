@@ -84,6 +84,7 @@ return {
         "json",
         "yaml",
         "terraform",
+        "svelte",
       },
       callback = function()
         vim.treesitter.start()

@@ -48,6 +48,10 @@ if which kubectl >/dev/null; then
     alias k=kubectl
 fi
 
+if which direnv >/dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
 # if which tmux >/dev/null; then
 #     if [[ -z ${TMUX} ]]; then
 #         tmux attach-session -t tasks || tmux new-session -s tasks

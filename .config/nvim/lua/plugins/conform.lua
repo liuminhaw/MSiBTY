@@ -19,6 +19,7 @@ return {
 				python = { "black" },
 				c = { "clang_format" },
 				rust = { "rustfmt" },
+                typescript = { "prettier" },
 			},
 			formatters = {
 				deno_fmt = {
